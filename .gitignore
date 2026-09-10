@@ -1,0 +1,13 @@
+﻿# Environment variables & secrets
+.env
+.env.*
+*.local
+credentials.json
+
+# Logs & caches
+*.log
+history.jsonl
+
+# OS generated files
+.DS_Store
+Thumbs.db
