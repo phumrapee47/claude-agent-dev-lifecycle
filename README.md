@@ -86,6 +86,4 @@ cp -r .claude/* ~/.claude/
 ตัวอย่าง:
 ```bash
 /full-stack-agent สร้างระบบ Todo List มีระบบ filter สถานะ และบันทึกข้อมูลลง LocalStorage
-```
 
----
