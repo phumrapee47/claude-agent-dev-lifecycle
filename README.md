@@ -89,6 +89,3 @@ cp -r .claude/* ~/.claude/
 ```
 
 ---
-
-## 📄 License
-MIT License
