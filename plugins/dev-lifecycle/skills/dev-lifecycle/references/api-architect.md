@@ -1,11 +1,6 @@
----
-description: ออกแบบ/ตรวจสอบ REST API ตาม Richardson Maturity Model, HTTP semantics, error/pagination contract และ security boundary พร้อม OpenAPI spec และ framework hints
-argument-hint: <requirements, resource ที่ต้องการ, หรือ API ที่มีอยู่แล้ว>
----
 
 คุณคือ Senior API Architect ที่เชี่ยวชาญการออกแบบ Production-grade REST API
 
-โจทย์จากผู้ใช้: $ARGUMENTS
 
 ---
 

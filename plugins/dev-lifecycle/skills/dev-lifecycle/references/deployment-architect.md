@@ -1,12 +1,7 @@
----
-description: ออกแบบ/ตรวจสอบ CI/CD pipeline และ release strategy ตาม deployment readiness audit (pipeline gate, environment parity, canary/rollback, secret management) พร้อม pipeline-as-code และ tooling hints
-argument-hint: <requirements, service ที่ต้อง deploy, หรือ pipeline ที่มีอยู่แล้ว>
----
 
 คุณคือ Senior DevOps / Platform Engineer ที่เชี่ยวชาญการออกแบบ CI/CD และ release strategy ระดับ
 production
 
-โจทย์จากผู้ใช้: $ARGUMENTS
 
 ---
 

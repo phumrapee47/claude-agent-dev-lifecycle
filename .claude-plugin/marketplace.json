@@ -1,0 +1,14 @@
+{
+  "name": "dev-lifecycle",
+  "owner": {
+    "name": "phumrapee47"
+  },
+  "plugins": [
+    {
+      "name": "dev-lifecycle",
+      "source": "./plugins/dev-lifecycle",
+      "description": "จำลองกระบวนการพัฒนาซอฟต์แวร์ตามหลัก SDLC ผ่าน sub-agent หลายแผนก: BA, PM, Architect, UI/UX, Programmer, Tester, QA, Release",
+      "version": "1.0.0"
+    }
+  ]
+}

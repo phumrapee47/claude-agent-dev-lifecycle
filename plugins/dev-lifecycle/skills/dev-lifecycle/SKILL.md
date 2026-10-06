@@ -55,7 +55,7 @@ User requirement
 5. งานเล็ก/ง่าย ให้ข้าม step ที่ไม่จำเป็นได้ เช่น ถ้าเป็นแค่แก้บั๊กเล็กน้อย ไม่ต้องเรียก BA/UIUX/Architect/Release ใหม่ทั้งชุด — ให้ orchestrator (ดู commands/dev-lifecycle.md) เป็นคนตัดสินใจว่าจะรันเต็ม pipeline หรือย่อ
 6. ถ้าคำตัดสินของ PM (กรณีแผนกขัดแย้งกัน หรือ programmer ทำไม่ได้ตาม spec) ทำให้ scope เปลี่ยนไปจาก docs/requirements.md เดิม ต้องเรียก BA กลับมาอัปเดต docs/requirements.md ให้ตรงกับคำตัดสินเสมอ ห้ามปล่อยให้ requirement doc กับสิ่งที่ implement จริงไม่ตรงกัน
 7. โฟลเดอร์ docs/ (และไฟล์ทั้งหมดที่อ้างถึงในไฟล์นี้ เช่น docs/requirements.md) อยู่ที่ project root เสมอ (โฟลเดอร์ที่ orchestrator ถูกเรียกใช้งาน/cwd ของ session) ไม่ใช่ relative กับตำแหน่งของ agent แต่ละตัว
-8. Architect/Release เรียกเฉพาะมุมมอง/methodology จาก commands/*-architect.md ที่เข้าเงื่อนไขจริงของงานนี้เท่านั้น (ดูเกณฑ์จับคู่ใน commands/dev-lifecycle.md) ห้ามรันครบทุกมุมมองแบบ default เพราะเปลือง token โดยไม่จำเป็น — แลกกับความถูกต้อง/ความง่ายในการแก้ไขภายหลัง ไม่ใช่แลกกับการรันทุกอย่างแบบไม่เลือก
+8. Architect/Release เรียกเฉพาะมุมมอง/methodology จาก skills/dev-lifecycle/references/*-architect.md ที่เข้าเงื่อนไขจริงของงานนี้เท่านั้น (ดูเกณฑ์จับคู่ใน commands/dev-lifecycle.md) ห้ามรันครบทุกมุมมองแบบ default เพราะเปลือง token โดยไม่จำเป็น — แลกกับความถูกต้อง/ความง่ายในการแก้ไขภายหลัง ไม่ใช่แลกกับการรันทุกอย่างแบบไม่เลือก
 
 ## การเรียกใช้งาน
 
@@ -74,8 +74,8 @@ User requirement
 | agents/qa.md | QA | test-report.md + requirements.md + architecture-spec.md | docs/qa-result.md |
 | agents/release.md | Release Engineer | requirements.md + qa-result.md (ต้อง PASS) | docs/release-plan.md (ข้ามได้ถ้าไม่ต้อง deploy จริง) |
 
-Skill ระดับ standalone ที่ architect.md/release.md อ่านเป็น methodology (ไม่ใช่ sub-agent — เป็นไฟล์ prompt ใน `commands/`):
-`commands/system-design-architect.md`, `commands/db-architect.md`, `commands/api-architect.md`,
-`commands/resilience-architect.md`, `commands/security-architect.md`, `commands/deployment-architect.md`,
-`commands/observability-architect.md` — architect.md/release.md เลือกอ่านเฉพาะไฟล์ที่เกี่ยวข้องกับงานจริง
+ไฟล์ methodology (bundled ใน plugin) ที่ architect.md/release.md อ่านเป็น methodology (ไม่ใช่ sub-agent — เป็นไฟล์ reference):
+`skills/dev-lifecycle/references/system-design-architect.md`, `skills/dev-lifecycle/references/db-architect.md`, `skills/dev-lifecycle/references/api-architect.md`,
+`skills/dev-lifecycle/references/resilience-architect.md`, `skills/dev-lifecycle/references/security-architect.md`, `skills/dev-lifecycle/references/deployment-architect.md`,
+`skills/dev-lifecycle/references/observability-architect.md` — architect.md/release.md เลือกอ่านเฉพาะไฟล์ที่เกี่ยวข้องกับงานจริง
 ไม่อ่านครบทุกไฟล์เสมอไป

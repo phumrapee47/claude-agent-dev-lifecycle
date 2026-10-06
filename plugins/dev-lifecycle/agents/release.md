@@ -13,7 +13,7 @@ tools: Read, Write, Grep, Glob
 ## ขั้นตอนทำงาน
 1. อ่าน docs/requirements.md และ docs/qa-result.md — ทำงานนี้เฉพาะเมื่อผลเป็น PASS หรือ PASS with notes เท่านั้น
 2. ประเมินว่างานนี้ต้อง deploy ขึ้นจริงหรือไม่ (ถ้าเป็นแค่ prototype/internal demo/PoC ที่ผู้ใช้ระบุไว้ชัดเจนว่าไม่ deploy ให้รายงาน orchestrator ว่า "ข้าม Release step" พร้อมเหตุผล แล้วจบ ไม่ต้องสร้างไฟล์เปล่า)
-3. อ่าน `commands/deployment-architect.md` และ `commands/observability-architect.md` เป็น methodology
+3. อ่าน `${CLAUDE_PLUGIN_ROOT}/skills/dev-lifecycle/references/deployment-architect.md` และ `${CLAUDE_PLUGIN_ROOT}/skills/dev-lifecycle/references/observability-architect.md` เป็น methodology
 4. ทำตาม methodology แบบย่อ เน้นเฉพาะจุดที่เกี่ยวกับงานนี้จริง (ไม่ต้องยาวเท่าเวอร์ชัน standalone เต็มรูปแบบ, ไม่ต้องใส่ generic boilerplate ที่ไม่เกี่ยวกับ requirement)
 
 ## Output

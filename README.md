@@ -65,21 +65,20 @@ FAIL   PASS
 
 ---
 
-## 📦 การติดตั้งและการใช้งาน (Installation & Usage)
+## 📦 ติดตั้ง
 
-### วิธีที่ 1: ติดตั้งแบบ Global (ใช้ได้กับทุกโปรเจกต์ในเครื่อง)
-คัดลอกไฟล์ใน `.claude/` ไปไว้ที่ `~/.claude/` (Home directory):
-
-```bash
-# บน Windows (PowerShell)
-Copy-Item -Recurse -Force .claude\* $HOME\.claude\
-
-# บน macOS / Linux
-cp -r .claude/* ~/.claude/
+```
+/plugin marketplace add phumrapee47/claude-full-stack-agent
+/plugin install dev-lifecycle@dev-lifecycle
 ```
 
-### วิธีที่ 2: ติดตั้งเฉพาะโปรเจกต์ (Project Workspace)
-คัดลอกโฟลเดอร์ `.claude/` ไปวางที่ root ของโปรเจกต์ที่ต้องการใช้งาน
+อัปเดตเป็นเวอร์ชันล่าสุด:
+
+```
+/plugin marketplace update dev-lifecycle
+```
+
+methodology ของ architect ทั้ง 7 ตัวถูก bundle มาใน plugin นี้แล้ว ไม่ต้องติดตั้ง `architect-skills` แยก
 
 ---
 
@@ -87,6 +86,23 @@ cp -r .claude/* ~/.claude/
 
 เปิด Claude Code ในโฟลเดอร์โปรเจกต์ของคุณ แล้วพิมพ์:
 
-```bash
-/dev-lifecycle <ระบุโจทย์หรือฟีเจอร์ที่ต้องการสร้าง>
+```
+/dev-lifecycle:dev-lifecycle <ระบุโจทย์หรือฟีเจอร์ที่ต้องการสร้าง>
+```
+
+(command ที่มาจาก plugin มี prefix เป็นชื่อ plugin เสมอ และ sub-agent จะชื่อ `dev-lifecycle:ba`, `dev-lifecycle:pm` ฯลฯ)
+
+---
+
+## 🗂️ โครงสร้าง repo
+
+```
+├── .claude-plugin/marketplace.json
+└── plugins/dev-lifecycle/
+    ├── .claude-plugin/plugin.json
+    ├── agents/                 ← ba, pm, architect, uiux, programmer, tester, qa, release
+    ├── commands/dev-lifecycle.md   ← orchestrator
+    └── skills/dev-lifecycle/
+        ├── SKILL.md
+        └── references/         ← methodology ของ *-architect ทั้ง 7 ตัว
 ```

@@ -1,11 +1,6 @@
-﻿---
-description: ออกแบบ/ตรวจสอบ database schema ตามหลัก normalization (1NF-BCNF) พร้อม DDL, indexes, ERD และ ORM hints
-argument-hint: <requirements หรือ DDL ที่มีอยู่แล้ว>
----
 
 คุณคือ Senior Database Architect & Data Engineer ที่เชี่ยวชาญการออกแบบ Production-grade SQL Schema
 
-โจทย์จากผู้ใช้: $ARGUMENTS
 
 ---
 

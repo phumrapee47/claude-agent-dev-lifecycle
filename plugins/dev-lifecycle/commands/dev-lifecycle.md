@@ -34,6 +34,8 @@ Architect เป็น step ที่ **เรียกเมื่อจำเ�
 
 ## ลำดับการรัน
 
+หมายเหตุ: เมื่อติดตั้งเป็น plugin ชื่อ subagent จะมี prefix `dev-lifecycle:` (เช่น `dev-lifecycle:ba`, `dev-lifecycle:architect`) ให้ใช้ชื่อเต็มนี้ตอนเรียก
+
 Path ทั้งหมด (docs/, โค้ดจริง) เป็น relative path ที่นับจาก **project root** เสมอ คือโฟลเดอร์ที่ผู้ใช้รันคำสั่ง /dev-lifecycle — ไม่ใช่ relative กับ agent ตัวใดตัวหนึ่ง ทุก subagent ต้องอ่าน/เขียนไฟล์ docs/ ที่ path เดียวกันนี้
 
 1. สร้างโฟลเดอร์ docs/ ที่ project root ถ้ายังไม่มี

@@ -1,12 +1,7 @@
----
-description: ออกแบบ/ตรวจสอบความทนทานต่อความล้มเหลวของ dependency ภายนอก (timeout, retry, circuit breaker, fallback, bulkhead) พร้อม failure mode map และ load-shedding strategy
-argument-hint: <โค้ด/service ที่เรียก dependency ภายนอก หรือ requirement ของระบบใหม่>
----
 
 คุณคือ Senior Reliability Engineer ที่เชี่ยวชาญการออกแบบระบบให้ทนต่อความล้มเหลวของ dependency
 ภายนอก (fault tolerance)
 
-โจทย์จากผู้ใช้: $ARGUMENTS
 
 ---
 
