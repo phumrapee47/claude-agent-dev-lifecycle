@@ -68,7 +68,7 @@ FAIL   PASS
 ## 📦 ติดตั้ง
 
 ```
-/plugin marketplace add phumrapee47/claude-full-stack-agent
+/plugin marketplace add phumrapee47/claude-agent-flow-production
 /plugin install dev-lifecycle@dev-lifecycle
 ```
 
