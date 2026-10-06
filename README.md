@@ -1,12 +1,13 @@
-﻿# Claude Full-Stack Agent Pipeline
+# Dev Lifecycle Pipeline
 
-จำลองทีมพัฒนาซอฟต์แวร์แบบ full-stack (BA, PM, UI/UX, Programmer, Tester, QA) โดยแบ่งเป็น sub-agent แต่ละแผนก ทำงานประสานกันเป็น pipeline ผ่านการส่งต่อไฟล์เอกสาร (File Handoff) ในโปรเจกต์
+จำลองกระบวนการพัฒนาซอฟต์แวร์ตามหลัก SDLC ครบวงจร (BA, PM, Architect, UI/UX, Programmer, Tester, QA, Release) โดยแบ่งเป็น sub-agent แต่ละแผนก ทำงานประสานกันเป็น pipeline ผ่านการส่งต่อไฟล์เอกสาร (File Handoff) ในโปรเจกต์
 
 ## 🚀 จุดเด่น (Key Features)
 
-- **File-based Pipeline**: Sub-agent แต่ละตัวทำงานผ่านการอ่าน-เขียนไฟล์ใน `docs/` แทนการคุยสด เพื่อควบคุม context และประหยัด Token
+- **File-based Pipeline**: Sub-agent แต่ละตัวทำงานผ่านการอ่าน-เขียนไฟล์ใน `docs/` แทนการคุยสด เพื่อควบคุม context
 - **Strict Role Scoping**: กำหนดขอบเขตหน้าที่และข้อห้ามของแต่ละบทบาทชัดเจน ป้องกันการทำงานล้ำหน้าที่ (Role Bleed)
 - **Synchronized Requirement & Scope**: เมื่อเกิดข้อขัดแย้งหรือข้อจำกัดทางเทคนิค PM จะเป็นผู้ตัดสินใจ และ Orchestrator จะเรียก BA มาอัปเดต Requirement เสมอ
+- **Conditional Architect & Release**: เรียก Architect/Release เฉพาะมุมมองที่เข้าเงื่อนไขของงานจริง (schema, API, external dependency, security, deploy) ไม่รันทุกอย่างแบบ default
 - **Circuit Breaker**: วนรอบการแก้บั๊กระหว่าง QA ↔ Programmer สูงสุด 3 รอบ เพื่อป้องกัน loop อนันต์
 
 ---
@@ -17,10 +18,14 @@
 |---|---|---|---|
 | **BA** (`agents/ba.md`) | Business Analyst | Requirement ดิบจากผู้ใช้ | `docs/requirements.md` |
 | **PM** (`agents/pm.md`) | Project Manager | `requirements.md` | `docs/tasks.md` |
+| **Architect** (`agents/architect.md`) | Technical Architect | `requirements.md` + `tasks.md` | `docs/architecture-spec.md` (ข้ามได้ถ้างานเล็ก) |
 | **UI/UX** (`agents/uiux.md`) | UI/UX Designer | `requirements.md` | `docs/design-spec.md` (ข้ามได้ถ้าไม่มี UI) |
-| **Programmer** (`agents/programmer.md`) | Full-stack Programmer | `tasks.md` + `design-spec.md` | โค้ดจริง + `docs/dev-notes.md` |
-| **Tester** (`agents/tester.md`) | Software Tester | โค้ดจริง + `requirements.md` | `docs/test-report.md` |
+| **Programmer** (`agents/programmer.md`) | Full-stack Programmer | `tasks.md` + `design-spec.md` + `architecture-spec.md` | โค้ดจริง + `docs/dev-notes.md` |
+| **Tester** (`agents/tester.md`) | Software Tester | โค้ดจริง + `requirements.md` + `architecture-spec.md` | `docs/test-report.md` |
 | **QA** (`agents/qa.md`) | Quality Assurance | `test-report.md` + `requirements.md` | `docs/qa-result.md` |
+| **Release** (`agents/release.md`) | Release Engineer | `requirements.md` + `qa-result.md` (ต้อง PASS) | `docs/release-plan.md` (ข้ามได้ถ้าไม่ deploy) |
+
+Architect และ Release อ่าน methodology จาก `commands/*-architect.md` (system-design, db, api, resilience, security, deployment, observability) เฉพาะไฟล์ที่เกี่ยวข้องกับงานนั้นจริง
 
 ---
 
@@ -36,13 +41,16 @@ User Requirement
   [PM]        → docs/tasks.md (แตก task P0/P1/P2)
      │
      ▼
+ [Architect]  → docs/architecture-spec.md (เฉพาะงานที่กระทบ design)
+     │
+     ▼
   [UI/UX]     → docs/design-spec.md (ข้ามได้ถ้าเป็น Backend/API)
      │
      ▼
 [Programmer]  → เขียนโค้ดจริงตาม spec
      │
      ▼
-  [Tester]    → docs/test-report.md
+  [Tester]    → docs/test-report.md (รวม security checklist)
      │
      ▼
    [QA]       → docs/qa-result.md (PASS / FAIL)
@@ -50,7 +58,7 @@ User Requirement
   ┌──┴──┐
 FAIL   PASS
   │     │
-  │     └─► จบ pipeline สรุปผลให้ผู้ใช้
+  │     └─► [Release] → docs/release-plan.md (ข้ามได้ถ้าไม่ deploy) → สรุปผลให้ผู้ใช้
   │
   └───────► วนกลับ Programmer (สูงสุด 3 รอบ)
 ```
@@ -80,10 +88,5 @@ cp -r .claude/* ~/.claude/
 เปิด Claude Code ในโฟลเดอร์โปรเจกต์ของคุณ แล้วพิมพ์:
 
 ```bash
-/full-stack-agent <ระบุโจทย์หรือฟีเจอร์ที่ต้องการสร้าง>
+/dev-lifecycle <ระบุโจทย์หรือฟีเจอร์ที่ต้องการสร้าง>
 ```
-
-ตัวอย่าง:
-```bash
-/full-stack-agent สร้างระบบ Todo List มีระบบ filter สถานะ และบันทึกข้อมูลลง LocalStorage
-

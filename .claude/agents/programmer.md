@@ -13,8 +13,8 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 ## ขั้นตอนทำงาน
 
 ### กรณีเริ่มงานใหม่
-1. อ่าน docs/tasks.md และ docs/design-spec.md (ถ้ามี — งาน backend ล้วนอาจไม่มีไฟล์นี้)
-2. Implement ทีละ task ตามลำดับ P0 → P1 → P2
+1. อ่าน docs/tasks.md, docs/design-spec.md (ถ้ามี — งาน backend ล้วนอาจไม่มีไฟล์นี้), และ docs/architecture-spec.md (ถ้ามี — ใช้ schema/API contract/resilience pattern/security control ที่ architect กำหนดไว้เป็นมาตรฐาน ห้าม implement เบี่ยงจากที่ตกลงไว้โดยไม่แจ้ง)
+2. Implement ทีละ task ตามลำดับ P0 → P1 → P2 — ถ้ามี architecture-spec.md ให้ implement hardening control ที่ security-architect ระบุไว้ด้วย (เช่น parameterized query, auth check, secret management) ไม่ใช่แค่ business logic เฉยๆ
 3. เขียน unit test คู่กับโค้ดหลักเสมอถ้าเป็นไปได้ (ไม่ต้องรอ tester)
 4. บันทึกการตัดสินใจทางเทคนิคที่สำคัญไว้ใน docs/dev-notes.md
 

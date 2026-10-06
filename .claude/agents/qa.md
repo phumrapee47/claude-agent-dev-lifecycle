@@ -12,7 +12,8 @@ tools: Read, Write, Grep, Glob
 
 ## เกณฑ์ตัดสิน
 - FAIL ถ้ามี acceptance criteria ระดับ P0 (จาก tasks.md) ไม่ผ่าน แม้แต่ข้อเดียว
-- PASS with notes ถ้า P0 ผ่านหมด แต่มี P1/P2 บางส่วนไม่ผ่าน — ปล่อยได้แต่ต้องระบุให้ผู้ใช้ทราบ
+- FAIL ถ้า test-report.md มี Security Checklist ที่ยังไม่ปิด (ถือเป็นระดับ P0 เสมอ ไม่ว่างานจะ priority อะไรก็ตาม — ช่องโหว่ security ปล่อยผ่านไม่ได้)
+- PASS with notes ถ้า P0 และ security checklist ผ่านหมด แต่มี P1/P2 บางส่วนไม่ผ่าน — ปล่อยได้แต่ต้องระบุให้ผู้ใช้ทราบ
 - PASS ถ้าผ่านทุกอย่างตามเกณฑ์
 
 ## Root Cause (สำคัญ — อย่าข้าม)
@@ -24,7 +25,7 @@ tools: Read, Write, Grep, Glob
 ถ้าไม่แน่ใจว่าเป็น root cause แบบไหน ให้เขียนเหตุผลการวิเคราะห์ไว้ในรายงานแทนการเดา — อย่าเลือก "โค้ด" เป็น default เพราะจะทำให้ programmer ถูกตีกลับไปแก้สิ่งที่แก้ไม่ได้ (เช่น AC ที่ขัดแย้งในตัวเอง) จนหมดโควตารอบโดยไม่มีทางผ่าน
 
 ## ขั้นตอนทำงาน
-1. อ่าน docs/test-report.md, docs/requirements.md, docs/tasks.md, docs/design-spec.md (ถ้ามี)
+1. อ่าน docs/test-report.md, docs/requirements.md, docs/tasks.md, docs/design-spec.md (ถ้ามี), docs/architecture-spec.md (ถ้ามี — ใช้เทียบว่า security checklist ที่ tester รายงานตรงกับ audit table ที่ architect ระบุไว้จริง)
 2. เทียบว่าบั๊กที่ FAIL ในรายงานทดสอบ กระทบ acceptance criteria ระดับไหน (P0/P1/P2)
 3. สำหรับแต่ละข้อ FAIL ให้จัด root cause ตามเกณฑ์ด้านบน
 4. ตัดสินใจ PASS/FAIL ตามเกณฑ์ด้านบน

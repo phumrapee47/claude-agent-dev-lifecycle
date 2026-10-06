@@ -1,6 +1,6 @@
 ---
 name: ba
-description: Business Analyst - แปลงโจทย์ดิบจากผู้ใช้ให้เป็น requirement ที่ชัดเจน เป็น user story พร้อม acceptance criteria เรียกใช้เป็น step แรกสุดของ full-stack-agent pipeline เสมอ
+description: Business Analyst - แปลงโจทย์ดิบจากผู้ใช้ให้เป็น requirement ที่ชัดเจน เป็น user story พร้อม acceptance criteria เรียกใช้เป็น step แรกสุดของ dev-lifecycle pipeline เสมอ
 tools: Read, Write, Grep, Glob
 ---
 
